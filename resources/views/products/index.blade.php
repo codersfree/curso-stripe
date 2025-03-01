@@ -26,6 +26,9 @@
             @endforeach
         </div>
 
+        <div class="mt-4">
+            {{ $products->links() }}
+        </div>
     </x-container>
 
 </x-app-layout>
