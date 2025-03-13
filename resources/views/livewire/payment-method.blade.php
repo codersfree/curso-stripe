@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-white rounded shadow-lg">
+    <section class="bg-white rounded shadow-lg mb-12">
         <div class="px-8 py-6">
 
             <h1 class="text-gray-700 text-lg font-semibold mb-4">Agregar método de pago</h1>
@@ -26,7 +26,31 @@
                 </x-button>
             </div>
         </footer>
-    </div>
+    </section>
+
+
+    <section class="bg-white rounded shadow-lg">
+        <header class="px-8 py-6 bg-gray-50 border-b border-gray-200">
+            <h1>
+                Métodos de pago agregados
+            </h1>
+        </header>
+
+        <div class="px-8 py-6">
+            <ul class="divide-y divide-gray-200">
+                @foreach ($paymentMethods as $paymentMethod)
+                    <li class="py-2">
+                        <p>
+                            <span class="font-semibold">{{ $paymentMethod->billing_details->name }}</span> xxxx-{{ $paymentMethod->card->last4 }}
+                        </p>
+                        <p>
+                            Expira: {{ $paymentMethod->card->exp_month }}/{{ $paymentMethod->card->exp_year }}
+                        </p>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </section>
 
     @push('js')
         <script src="https://js.stripe.com/v3/"></script>
@@ -44,7 +68,6 @@
             const cardHolderName = document.getElementById('card-holder-name');
             const cardButton = document.getElementById('card-button');
             
-
             cardButton.addEventListener('click', async (e) => {
 
                 //Deshabilitar boton
