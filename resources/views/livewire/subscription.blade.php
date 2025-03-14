@@ -72,7 +72,11 @@
                             <span>Free updates: <span class="font-semibold">6 months</span></span>
                         </li>
                     </ul>
-                    <x-button>
+                    <x-button 
+                        wire:click="newSubscription('price_1R2NjsAq01PAu6h0C8Y2s8Rs')"
+                        wire:target="newSubscription('price_1R2NjsAq01PAu6h0C8Y2s8Rs')"
+                        wire:loading.attr="disabled"
+                        >
                         Suscribirse
                     </x-button>
                 </div>
