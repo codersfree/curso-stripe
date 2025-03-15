@@ -9,7 +9,9 @@
 
                     <div class="px-6 py-4">
                         <h1 class="font-semibold text-xl mb-2">
-                            {{$article->title}}
+                            <a href="{{route('articles.show', $article)}}">
+                                {{$article->title}}
+                            </a>
                         </h1>
 
                         {{ Str::limit($article->extract, 150) }}
