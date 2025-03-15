@@ -168,9 +168,38 @@
                             <span>Free updates: <span class="font-semibold">24 months</span></span>
                         </li>
                     </ul>
-                    <x-button>
-                        Suscribirse
-                    </x-button>
+
+                    @if (auth()->user()->subscribedToPrice('price_1R2NkkAq01PAu6h0K9eem8px', 'Suscripciones blog'))
+
+                        @if (auth()->user()->subscription('Suscripciones blog')->onGracePeriod())
+                            
+                            <x-secondary-button
+                                wire:click="resumeSubscription"
+                                wire:target="resumeSubscription"
+                                wire:loading.attr="disabled">
+                                Reanudar suscripción
+                            </x-secondary-button>
+
+                        @else
+
+                            <x-danger-button
+                                wire:click="cancelSubscription"
+                                wire:target="cancelSubscription"
+                                wire:loading.attr="disabled">
+                                Cancelar suscripción
+                            </x-danger-button>
+
+                        @endif
+
+                    @else
+                        <x-button 
+                            wire:click="newSubscription('price_1R2NkkAq01PAu6h0K9eem8px')"
+                            wire:target="newSubscription('price_1R2NkkAq01PAu6h0K9eem8px')"
+                            wire:loading.attr="disabled"
+                            >
+                            Suscribirse
+                        </x-button>
+                    @endif
                 </div>
                 <!-- Pricing Card -->
                 <div
@@ -235,9 +264,38 @@
                             <span>Free updates: <span class="font-semibold">36 months</span></span>
                         </li>
                     </ul>
-                    <x-button>
-                        Suscribirse
-                    </x-button>
+                    
+                    @if (auth()->user()->subscribedToPrice('price_1R2NlOAq01PAu6h0vue1ze8b', 'Suscripciones blog'))
+
+                        @if (auth()->user()->subscription('Suscripciones blog')->onGracePeriod())
+                            
+                            <x-secondary-button
+                                wire:click="resumeSubscription"
+                                wire:target="resumeSubscription"
+                                wire:loading.attr="disabled">
+                                Reanudar suscripción
+                            </x-secondary-button>
+
+                        @else
+
+                            <x-danger-button
+                                wire:click="cancelSubscription"
+                                wire:target="cancelSubscription"
+                                wire:loading.attr="disabled">
+                                Cancelar suscripción
+                            </x-danger-button>
+
+                        @endif
+
+                    @else
+                        <x-button 
+                            wire:click="newSubscription('price_1R2NlOAq01PAu6h0vue1ze8b')"
+                            wire:target="newSubscription('price_1R2NlOAq01PAu6h0vue1ze8b')"
+                            wire:loading.attr="disabled"
+                            >
+                            Suscribirse
+                        </x-button>
+                    @endif
                 </div>
             </div>
         </div>

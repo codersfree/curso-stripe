@@ -23,6 +23,16 @@ class Subscription extends Component
         }
 
         try {
+
+            if (auth()->user()->subscribed('Suscripciones blog')) {
+                auth()->user()
+                    ->subscription('Suscripciones blog')
+                    ->swap($plan);
+
+                return;
+            }
+
+
             auth()->user()
                 ->newSubscription('Suscripciones blog', $plan)
                 ->create(
@@ -37,8 +47,6 @@ class Subscription extends Component
 
             return;
         }
-
-
         
     }
 
@@ -58,6 +66,7 @@ class Subscription extends Component
 
     public function render()
     {
+        auth()->user()->refresh();
         return view('livewire.subscription');
     }
 }
