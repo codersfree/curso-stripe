@@ -34,7 +34,6 @@ class Subscription extends Component
                 return;
             }
 
-
             auth()->user()
                 ->newSubscription('Suscripciones blog', $plan)
                 ->trialDays(7)

@@ -2,7 +2,7 @@
 
     <x-container class="py-12">
 
-        <div class="grid grid-cols-12">
+        <div class="grid grid-cols-12 gap-8">
             <div class="col-span-7">
                 <div class="card">
                     <div class="card-body">
@@ -30,7 +30,9 @@
             </div>
 
             <div class="col-span-5">
-
+                @livewire('product-pay', [
+                    'product' => $product
+                ])
             </div>
         </div>
 

@@ -30,3 +30,7 @@ Route::get('billings', [BillingContoller::class, 'index'])
 Route::get('/user/invoice/{invoice}', function (Request $request, string $invoiceId) {
     return $request->user()->downloadInvoice($invoiceId);
 });
+
+Route::get('/gracias', function () {
+    return 'Gracias por tu compra';
+})->name('gracias');
