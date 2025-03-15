@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BillingContoller;
 use App\Http\Controllers\ProductController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class, 'index'])
@@ -14,3 +15,7 @@ Route::get('articles', [ArticleController::class, 'index'])
 Route::get('billings', [BillingContoller::class, 'index'])
     ->middleware('auth')
     ->name('billings.index');
+
+Route::get('/user/invoice/{invoice}', function (Request $request, string $invoiceId) {
+    return $request->user()->downloadInvoice($invoiceId);
+});

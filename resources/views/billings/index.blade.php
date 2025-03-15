@@ -6,7 +6,12 @@
             @livewire('subscription')
         </div>
 
-        @livewire('payment-method')
+        <div class="mb-24">
+            @livewire('payment-method')
+        </div>
+
+        @livewire('invoices')
+        
     </x-container>
 
 </x-app-layout>

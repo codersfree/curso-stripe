@@ -29,6 +29,8 @@ class Subscription extends Component
                     ->subscription('Suscripciones blog')
                     ->swap($plan);
 
+                $this->dispatch('newSubscription');
+
                 return;
             }
 
@@ -38,6 +40,9 @@ class Subscription extends Component
                 ->create(
                     auth()->user()->defaultPaymentMethod()->id
                 );
+
+            $this->dispatch('newSubscription');
+
         } catch (\Exception $e) {
             $this->dispatch('swal', [
                 'icon' => 'error',
