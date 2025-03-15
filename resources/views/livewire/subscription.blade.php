@@ -72,13 +72,38 @@
                             <span>Free updates: <span class="font-semibold">6 months</span></span>
                         </li>
                     </ul>
-                    <x-button 
-                        wire:click="newSubscription('price_1R2NjsAq01PAu6h0C8Y2s8Rs')"
-                        wire:target="newSubscription('price_1R2NjsAq01PAu6h0C8Y2s8Rs')"
-                        wire:loading.attr="disabled"
-                        >
-                        Suscribirse
-                    </x-button>
+
+                    @if (auth()->user()->subscribedToPrice('price_1R2NjsAq01PAu6h0C8Y2s8Rs', 'Suscripciones blog'))
+
+                        @if (auth()->user()->subscription('Suscripciones blog')->onGracePeriod())
+                            
+                            <x-secondary-button
+                                wire:click="resumeSubscription"
+                                wire:target="resumeSubscription"
+                                wire:loading.attr="disabled">
+                                Reanudar suscripción
+                            </x-secondary-button>
+
+                        @else
+
+                            <x-danger-button
+                                wire:click="cancelSubscription"
+                                wire:target="cancelSubscription"
+                                wire:loading.attr="disabled">
+                                Cancelar suscripción
+                            </x-danger-button>
+
+                        @endif
+
+                    @else
+                        <x-button 
+                            wire:click="newSubscription('price_1R2NjsAq01PAu6h0C8Y2s8Rs')"
+                            wire:target="newSubscription('price_1R2NjsAq01PAu6h0C8Y2s8Rs')"
+                            wire:loading.attr="disabled"
+                            >
+                            Suscribirse
+                        </x-button>
+                    @endif
                 </div>
                 <!-- Pricing Card -->
                 <div
