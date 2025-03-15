@@ -37,6 +37,7 @@ class Subscription extends Component
 
             auth()->user()
                 ->newSubscription('Suscripciones blog', $plan)
+                ->trialDays(7)
                 ->create(
                     auth()->user()->defaultPaymentMethod()->id
                 );
